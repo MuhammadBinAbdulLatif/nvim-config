@@ -1,17 +1,17 @@
-local options = {
-  formatters_by_ft = {
-    lua = { "stylua" },
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    css = { "prettier" },
-    html = { "prettier" },
+-- Example LazyVim/lazy.nvim configuration
+return {
+  "stevearc/conform.nvim",
+  opts = {
+    formatters_by_ft = {
+      javascript = { "biome" },
+      typescript = { "biome" },
+      javascriptreact = { "biome" },
+      typescriptreact = { "biome" },
+      json = { "biome" },
+    },
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    },
   },
-
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
 }
-
-return options
