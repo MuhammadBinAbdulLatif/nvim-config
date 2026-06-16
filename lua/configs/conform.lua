@@ -1,17 +1,22 @@
--- Example LazyVim/lazy.nvim configuration
-return {
-  "stevearc/conform.nvim",
-  opts = {
-    formatters_by_ft = {
-      javascript = { "biome" },
-      typescript = { "biome" },
-      javascriptreact = { "biome" },
-      typescriptreact = { "biome" },
-      json = { "biome" },
+return { -- Autoformat
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {
+        notify_on_error = false,
+        format_on_save = function(bufnr)
+            local lsp_format_opt = "never"
+            return {
+                timeout_ms = 500,
+                lsp_format = lsp_format_opt,
+            }
+        end,
+        formatters_by_ft = {
+            lua = { "stylua" },
+            javascript = { "biome", "biome-organize-imports" },
+            javascriptreact = { "biome", "biome-organize-imports" },
+            typescript = { "biome", "biome-organize-imports" },
+            typescriptreact = { "biome", "biome-organize-imports" },
+        },
     },
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_format = "fallback",
-    },
-  },
 }
