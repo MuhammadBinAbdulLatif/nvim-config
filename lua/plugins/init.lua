@@ -28,7 +28,23 @@ return {
         "html", "css", "typescript", "javascript", "golang", "python"
       },
     },
+  },{
+  "Jamsjz/django.nvim",
+  dependencies = {
+    "nvim-telescope/telescope.nvim", -- optional
+    "voldikss/vim-floaterm",         -- optional
   },
+  config = function()
+    require("django").setup({
+      mappings = {
+        find_app = "<leader>df",
+        run_command = "<leader>dd",
+        django_shell = "<leader>dn",
+        new_project = "<leader>dp",
+      },
+    })
+  end,
+},
 {
   "stevearc/conform.nvim",
   event = {"BufReadPre", "BufNewFile"},
@@ -46,5 +62,18 @@ return {
       lsp_fallback = true,
     },
   },
-}
+},
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, conf)
+      -- Force find_files picker to respect your .gitignore
+      conf.pickers = {
+        find_files = {
+          no_ignore = false, -- Changing this to false respects .gitignore
+          hidden = true,     -- Keeps hidden dotfiles visible but drops ignored ones
+        },
+      }
+      return conf
+    end,
+  },
 }

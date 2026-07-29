@@ -11,7 +11,11 @@ return { -- Autoformat
                 lsp_format = lsp_format_opt,
             }
         end,
-        formatters_by_ft = {
+        formatters_by_ft = { 
+          python = {
+          "ruff_organize_imports",
+          "ruff_format",
+                  },
             lua = { "stylua" },
             javascript = { "biome", "biome-organize-imports" },
             javascriptreact = { "biome", "biome-organize-imports" },

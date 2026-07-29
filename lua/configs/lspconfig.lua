@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- list of servers
-local servers = { "html", "cssls", "ts_ls", "pyright", "tailwindcss", "emmet_language_server", "biome", "gopls" }
+local servers = { "html", "cssls", "ts_ls", "pyright", "tailwindcss", "emmet_language_server", "biome", "gopls", "ruff", "stylua" }
 
 -- configure servers using the new 0.11 API
 for _, lsp in ipairs(servers) do
